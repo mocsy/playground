@@ -1,9 +1,9 @@
-#include <halfflipfop2>
+#include "./halfflipflop2.hh"
 #include <utility>
 
-namesapce clementine {
+namespace clementine {
     
-    std::pair<bool,bool> halfflipfop2::decide_sr(bool S, bool R)
+    std::pair<bool,bool> halfflipflop2::decide_sr(bool S, bool R)
     {
         static bool Q, Qn = 0;
         if (S == 1) {
@@ -12,6 +12,7 @@ namesapce clementine {
                 Qn = !Q;
             }
             else {
+                //state 'X'
                 Q = -1;
                 Qn = -1;
             }
@@ -29,14 +30,14 @@ namesapce clementine {
         return std::make_pair(Q, Qn);
     }
     
-    std::pair<bool,bool> halfflipfop2::decide_d(bool D)
+    std::pair<bool,bool> halfflipflop2::decide_d(bool D)
     {
         static bool Q = D;
         static bool Qn = !D;
         return std::make_pair(Q, Qn);
     }
     
-    std::pair<bool,bool> halfflipfop2::decide_dg(bool D, bool G)
+    std::pair<bool,bool> halfflipflop2::decide_dg(bool D, bool G)
     {
         static bool Q, Qn = 0;
         if (D == 1) {
